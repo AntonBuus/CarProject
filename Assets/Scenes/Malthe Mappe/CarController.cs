@@ -17,11 +17,15 @@ public class CarController : MonoBehaviour
     private float currentSteerAngle;
     public bool isBreaking;
 
+
     [SerializeField] private float motorForce;
     [SerializeField] private float breakForce;
     [SerializeField] private float maxSteeringAngle;
+    Vector3 movement;
 
 
+
+    public Rigidbody rb; 
     [SerializeField] private WheelCollider frontLeftWheelCollider;
     [SerializeField] private WheelCollider frontRightWheelCollider;
     [SerializeField] private WheelCollider rearLeftWheelCollider;
@@ -35,6 +39,7 @@ public class CarController : MonoBehaviour
 
 
 
+  
 
     private void FixedUpdate()
     {
@@ -42,8 +47,9 @@ public class CarController : MonoBehaviour
         HandleMotor();
         HandleSteering();
         UpdateWheels();
+        
 
-        if (Input.GetKeyDown(KeyCode.Space))
+        if (Input.GetKey(KeyCode.Space))
         {
             isBreaking = true;
         }
@@ -69,8 +75,7 @@ public class CarController : MonoBehaviour
     {
         frontLeftWheelCollider.motorTorque = verticalInput * motorForce; //Den Tager det individuelle hjul og drejer det
         frontRightWheelCollider.motorTorque = verticalInput * motorForce; // Tilføj forhjulene også bliver taget med
-        rearRightWheelCollider.motorTorque = verticalInput * motorForce * 0.2f;
-        rearLeftWheelCollider.motorTorque = verticalInput * motorForce * 0.2f;
+        
 
         currentbreakForce = isBreaking ? breakForce : 0f;
         if (isBreaking)
