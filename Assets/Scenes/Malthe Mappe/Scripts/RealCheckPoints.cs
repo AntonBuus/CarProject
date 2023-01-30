@@ -5,7 +5,9 @@ public class RealCheckPoints : MonoBehaviour
     private static Vector3 spawnPoint;
     private bool playerTriggered = false;
     public Transform Player;
-
+    
+    public Quaternion originalRotationValue;
+    CarController car;
     private void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("Player"))
@@ -27,6 +29,11 @@ public class RealCheckPoints : MonoBehaviour
     {
 
         Player.position = spawnPoint;
+        Player.rotation = originalRotationValue;
+        car.frontLeftWheelCollider.motorTorque = 0f;
+        car.frontRightWheelCollider.motorTorque = 0f;
+
+
 
     }
 }

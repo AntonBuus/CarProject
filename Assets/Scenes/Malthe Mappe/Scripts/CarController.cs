@@ -8,7 +8,7 @@ public class CarController : MonoBehaviour
     private const string HORIZONTAL = "Horizontal";
     private const string VERTICAL = "Vertical";
 
-
+    public Material GlowingMat;
     private float horizontalInput;
     private float verticalInput;
     private float currentbreakForce;
@@ -21,13 +21,13 @@ public class CarController : MonoBehaviour
     [SerializeField] private float motorForce;
     [SerializeField] private float breakForce;
     [SerializeField] private float maxSteeringAngle;
-    Vector3 movement;
+    
 
 
 
     public Rigidbody rb; 
-    [SerializeField] private WheelCollider frontLeftWheelCollider;
-    [SerializeField] private WheelCollider frontRightWheelCollider;
+    public WheelCollider frontLeftWheelCollider;
+    public WheelCollider frontRightWheelCollider;
     [SerializeField] private WheelCollider rearLeftWheelCollider;
     [SerializeField] private WheelCollider rearRightWheelCollider;
 
@@ -39,7 +39,10 @@ public class CarController : MonoBehaviour
 
 
 
-  
+    private void Awake()
+    {
+        GlowingMat.DisableKeyword("_EMISSION");
+    }
 
     private void FixedUpdate()
     {
@@ -52,10 +55,12 @@ public class CarController : MonoBehaviour
         if (Input.GetKey(KeyCode.Space))
         {
             isBreaking = true;
+            GlowingMat.EnableKeyword("_EMISSION");
         }
         else
         {
             isBreaking = false;
+            GlowingMat.DisableKeyword("_EMISSION");
         }
 
     }
