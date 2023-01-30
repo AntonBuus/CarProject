@@ -5,9 +5,16 @@ using UnityEngine;
 public class CarController : MonoBehaviour
 {
 
-    private const string HORIZONTAL = "Horizontal";
-    private const string VERTICAL = "Vertical";
+   
+    private float Horizontal;
+    private float Vertical;
 
+    public bool ready = false;
+
+    AudioManager Audio;
+
+    public float downTime, upTime, pressTime = 0;
+    public float countDown = 2.0f;
     public Material GlowingMat;
     private float horizontalInput;
     private float verticalInput;
@@ -16,7 +23,8 @@ public class CarController : MonoBehaviour
     private float steerAngle;
     private float currentSteerAngle;
     public bool isBreaking;
-
+    public ParticleSystem leftParticle;
+    public ParticleSystem rightParticle;
 
     [SerializeField] private float motorForce;
     [SerializeField] private float breakForce;
@@ -42,14 +50,25 @@ public class CarController : MonoBehaviour
     private void Awake()
     {
         GlowingMat.DisableKeyword("_EMISSION");
+        
     }
 
+
+    private void Start()
+    {
+        leftParticle.Stop();
+        rightParticle.Stop();
+        FindObjectOfType<AudioManager>().Play("SpitFire");
+
+    }
     private void FixedUpdate()
     {
         GetInput();
         HandleMotor();
         HandleSteering();
         UpdateWheels();
+        
+
         
 
         if (Input.GetKey(KeyCode.Space))
@@ -67,19 +86,80 @@ public class CarController : MonoBehaviour
 
     private void GetInput()
     {
-        horizontalInput = Input.GetAxis(HORIZONTAL);
-        verticalInput = Input.GetAxis(VERTICAL);
-       
 
-       
+
+        {
+            if (Input.GetKey(KeyCode.D) && ready == false)
+            {
+                downTime = Time.time;
+                pressTime = downTime + countDown;
+                ready = true;
+            }
+            if (Input.GetKeyUp(KeyCode.D))
+            {
+                ready = false;
+            }
+            if (Time.time >= pressTime && ready == true)
+            {
+                
+                
+                leftParticle.Play();
+                rightParticle.Play();
+                //Debug.Log("Hello");
+
+                
+            }
+            else
+            {
+                leftParticle.Stop();
+                rightParticle.Stop();
+            }
+
+            
+        }
+
+
+
+
+
+        if (Input.GetKey(KeyCode.D))
+        {
+            Horizontal = 1f;
+
+        }
+        else if (Input.GetKey(KeyCode.A))
+        {
+            Horizontal = -1f;
+        }
+        else
+        {
+            Horizontal = 0f;
+        }
         
 
+        if (Input.GetKey(KeyCode.W))
+        {
+            Vertical = 1f;
+            //FindObjectOfType<AudioManager>().Play("CarDriving"); //dårlig ide med find objekt but i will have to do for now
+        }
+        //else
+        //{
+            //Audio
+        //}
+        else if (Input.GetKey(KeyCode.S))
+        {
+            Vertical = -1f;
+        }
+        else
+        {
+            Vertical = 0f;
+        }
     }
 
     private void HandleMotor()
     {
-        frontLeftWheelCollider.motorTorque = verticalInput * motorForce; //Den Tager det individuelle hjul og drejer det
-        frontRightWheelCollider.motorTorque = verticalInput * motorForce; // Tilføj forhjulene også bliver taget med
+        frontLeftWheelCollider.motorTorque = Vertical * motorForce; //Den Tager det individuelle hjul og drejer det
+        frontRightWheelCollider.motorTorque = Vertical * motorForce; // Tilføj forhjulene også bliver taget med
         
 
         currentbreakForce = isBreaking ? breakForce : 0f;
@@ -89,12 +169,12 @@ public class CarController : MonoBehaviour
             frontLeftWheelCollider.brakeTorque = currentbreakForce;
             rearLeftWheelCollider.brakeTorque = currentbreakForce;
             rearRightWheelCollider.brakeTorque = currentbreakForce;
-            Debug.Log("i am breaking");
+            
 
         }
         else if (!isBreaking) 
         {
-            Debug.Log("i am not breaking");
+            
             frontRightWheelCollider.brakeTorque = nobreakingForce;
             frontLeftWheelCollider.brakeTorque = nobreakingForce;
             rearLeftWheelCollider.brakeTorque = nobreakingForce;
@@ -119,7 +199,7 @@ public class CarController : MonoBehaviour
 
     private void HandleSteering()
     {
-        currentSteerAngle = maxSteeringAngle * horizontalInput;
+        currentSteerAngle = maxSteeringAngle * Horizontal;
         frontLeftWheelCollider.steerAngle = currentSteerAngle;
         frontRightWheelCollider.steerAngle = currentSteerAngle;
 
