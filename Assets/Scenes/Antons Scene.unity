@@ -613,13 +613,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a9c0058e4943eaa47a18ae3f3dcf4fc3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+<<<<<<< Updated upstream
 --- !u!1001 &2312166985030119877
+=======
+--- !u!1001 &216492387288798343
+>>>>>>> Stashed changes
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+<<<<<<< Updated upstream
     - target: {fileID: 2312166984958267192, guid: 9d1a06e6fa91e9d4a87217a321677609, type: 3}
       propertyPath: m_RootOrder
       value: 4
@@ -670,6 +675,58 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9d1a06e6fa91e9d4a87217a321677609, type: 3}
+=======
+    - target: {fileID: 439617501726913934, guid: acf3ab27b79aa884fa31cd457f03c1e1, type: 3}
+      propertyPath: m_RootOrder
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 439617501726913934, guid: acf3ab27b79aa884fa31cd457f03c1e1, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 3.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 439617501726913934, guid: acf3ab27b79aa884fa31cd457f03c1e1, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 17.796589
+      objectReference: {fileID: 0}
+    - target: {fileID: 439617501726913934, guid: acf3ab27b79aa884fa31cd457f03c1e1, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -46.412994
+      objectReference: {fileID: 0}
+    - target: {fileID: 439617501726913934, guid: acf3ab27b79aa884fa31cd457f03c1e1, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.7071068
+      objectReference: {fileID: 0}
+    - target: {fileID: 439617501726913934, guid: acf3ab27b79aa884fa31cd457f03c1e1, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0.7071068
+      objectReference: {fileID: 0}
+    - target: {fileID: 439617501726913934, guid: acf3ab27b79aa884fa31cd457f03c1e1, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 439617501726913934, guid: acf3ab27b79aa884fa31cd457f03c1e1, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 439617501726913934, guid: acf3ab27b79aa884fa31cd457f03c1e1, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: -90
+      objectReference: {fileID: 0}
+    - target: {fileID: 439617501726913934, guid: acf3ab27b79aa884fa31cd457f03c1e1, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 439617501726913934, guid: acf3ab27b79aa884fa31cd457f03c1e1, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8276687177840222244, guid: acf3ab27b79aa884fa31cd457f03c1e1, type: 3}
+      propertyPath: m_Name
+      value: GnistParticles
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: acf3ab27b79aa884fa31cd457f03c1e1, type: 3}
+>>>>>>> Stashed changes
 --- !u!1001 &7450350274571221507
 PrefabInstance:
   m_ObjectHideFlags: 0
