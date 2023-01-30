@@ -3,6 +3,7 @@ using UnityEngine;
 public class RealCheckPoints : MonoBehaviour
 {
     private static Vector3 spawnPoint;
+    private static Vector3 Offset;
     private bool playerTriggered = false;
     public Transform Player;
     
