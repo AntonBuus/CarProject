@@ -58,6 +58,8 @@ public class CarController : MonoBehaviour
     {
         leftParticle.Stop();
         rightParticle.Stop();
+        FindObjectOfType<AudioManager>().Play("SpitFire");
+
     }
     private void FixedUpdate()
     {
@@ -138,8 +140,12 @@ public class CarController : MonoBehaviour
         if (Input.GetKey(KeyCode.W))
         {
             Vertical = 1f;
-            FindObjectOfType<AudioManager>().Play("CarDriving");
+            //FindObjectOfType<AudioManager>().Play("CarDriving"); //dårlig ide med find objekt but i will have to do for now
         }
+        //else
+        //{
+            //Audio
+        //}
         else if (Input.GetKey(KeyCode.S))
         {
             Vertical = -1f;
