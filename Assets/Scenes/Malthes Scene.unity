@@ -546,7 +546,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2312166984958267199, guid: 9d1a06e6fa91e9d4a87217a321677609, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9d1a06e6fa91e9d4a87217a321677609, type: 3}
@@ -756,11 +756,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5eb5d99a1d1d2f8468754f0ee9f90b65, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sounds:
-  - clip: {fileID: 8300000, guid: eb674c2634c260d4e97176dc67aae740, type: 3}
-    volume: 0.48
-    name: CarDriving
-    source: {fileID: 0}
+  sounds: []
 --- !u!4 &683719236
 Transform:
   m_ObjectHideFlags: 0
@@ -1708,7 +1704,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2312166984958267199, guid: 9d1a06e6fa91e9d4a87217a321677609, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9d1a06e6fa91e9d4a87217a321677609, type: 3}

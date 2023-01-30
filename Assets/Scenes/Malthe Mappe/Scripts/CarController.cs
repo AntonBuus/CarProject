@@ -50,9 +50,15 @@ public class CarController : MonoBehaviour
     private void Awake()
     {
         GlowingMat.DisableKeyword("_EMISSION");
-        Audio = GetComponent<AudioManager>();
+        
     }
 
+
+    private void Start()
+    {
+        leftParticle.Stop();
+        rightParticle.Stop();
+    }
     private void FixedUpdate()
     {
         GetInput();
@@ -93,26 +99,22 @@ public class CarController : MonoBehaviour
             }
             if (Time.time >= pressTime && ready == true)
             {
-                ready = false;
-                Audio.Play("CarDriving");
+                
+                
+                leftParticle.Play();
+                rightParticle.Play();
+                //Debug.Log("Hello");
+
                 
             }
+            else
+            {
+                leftParticle.Stop();
+                rightParticle.Stop();
+            }
+
+            
         }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -136,6 +138,7 @@ public class CarController : MonoBehaviour
         if (Input.GetKey(KeyCode.W))
         {
             Vertical = 1f;
+            FindObjectOfType<AudioManager>().Play("CarDriving");
         }
         else if (Input.GetKey(KeyCode.S))
         {
