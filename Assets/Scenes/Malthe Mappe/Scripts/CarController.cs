@@ -185,7 +185,7 @@ public class CarController : MonoBehaviour
         {
             Horizontal = 0f; 
         }
-        if (Input.GetKey(KeyCode.W))
+        if (Input.GetKey(KeyCode.W) && !isBreaking)
         {
             Vertical = 1f;
             //FindObjectOfType<AudioManager>().Play("CarDriving"); //dårlig ide med find objekt but i will have to do for now
@@ -194,7 +194,7 @@ public class CarController : MonoBehaviour
                 accel += + 0.1f; //Remember to change the mass of the wheels
             }
         }
-        else if (Input.GetKey(KeyCode.S))
+        else if (Input.GetKey(KeyCode.S) && !isBreaking)
         {
             Vertical = -1f;
             if (accel <= 10)
@@ -212,7 +212,7 @@ public class CarController : MonoBehaviour
     {
         frontLeftWheelCollider.motorTorque = Vertical * accel * motorForce; //Den Tager det individuelle hjul og drejer det
         frontRightWheelCollider.motorTorque = Vertical * accel * motorForce; // Tilføj forhjulene også bliver taget med
-
+        Debug.Log(frontLeftWheelCollider.motorTorque);
        
         currentbreakForce = isBreaking ? breakForce : 0f;
         if (isBreaking)

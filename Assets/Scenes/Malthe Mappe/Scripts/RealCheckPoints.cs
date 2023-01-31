@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 
 public class RealCheckPoints : MonoBehaviour
@@ -8,7 +9,7 @@ public class RealCheckPoints : MonoBehaviour
     public Transform Player;
     
     public Quaternion originalRotationValue;
-    CarController car;
+    public CarController car;
     private void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("Player"))
@@ -24,6 +25,7 @@ public class RealCheckPoints : MonoBehaviour
         if (playerTriggered && Input.GetKey("r"))
         {
             Respawn();
+            StartCoroutine("StopCar");
         }
     }
     public void Respawn()
@@ -31,10 +33,22 @@ public class RealCheckPoints : MonoBehaviour
 
         Player.position = spawnPoint;
         Player.rotation = originalRotationValue;
-        car.frontLeftWheelCollider.motorTorque = 0f;
-        car.frontRightWheelCollider.motorTorque = 0f;
+        
+       
 
 
 
     }
+    
+    IEnumerator StopCar()
+    {
+        yield return new WaitForEndOfFrame();
+        car.rb.isKinematic = true;
+        car.frontLeftWheelCollider.motorTorque = 0f;
+        car.frontRightWheelCollider.motorTorque = 0f;
+        yield return new WaitForSeconds(0.5f);
+        car.rb.isKinematic = false;
+
+    }
+    
 }
