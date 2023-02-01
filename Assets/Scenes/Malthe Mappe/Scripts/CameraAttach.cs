@@ -10,8 +10,9 @@ public class CameraAttach : MonoBehaviour
     [SerializeField] private float translateSpeed;
     [SerializeField] private float rotationSpeed;
 
+    public Camera cam;
 
-
+    // public SpeedZoom _SZ;
 
     private void FixedUpdate()
     {
@@ -35,4 +36,22 @@ public class CameraAttach : MonoBehaviour
         // noget med flip af kameraet hvis Z positionen er over
     }
 
+    IEnumerator Waiter()
+    {
+        yield return new WaitForSeconds(2);
+        Countdown();
+    }
+
+    public void SpeedBoostZoom()
+    {
+        // if (_SZ.speedbool)
+        cam.fieldOfView = Mathf.Lerp(cam.fieldOfView, 100f, 1f);
+        // StartCoroutine("Waiter"); 
+    }
+
+    void Countdown()
+    {
+        while (cam.fieldOfView > 60)
+        cam.fieldOfView -= 0.2f;
+    }
 }
