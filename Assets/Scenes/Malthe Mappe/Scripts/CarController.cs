@@ -210,8 +210,8 @@ public class CarController : MonoBehaviour
     }
     private void HandleMotor()
     {
-        frontLeftWheelCollider.motorTorque = Vertical * accel * motorForce; //Den Tager det individuelle hjul og drejer det
-        frontRightWheelCollider.motorTorque = Vertical * accel * motorForce; // Tilføj forhjulene også bliver taget med
+        frontLeftWheelCollider.motorTorque = Vertical * accel * motorForce; // Drag burde virke på RigidBodyen
+        frontRightWheelCollider.motorTorque = Vertical * accel * motorForce; 
         Debug.Log(frontLeftWheelCollider.motorTorque);
        
         currentbreakForce = isBreaking ? breakForce : 0f;
