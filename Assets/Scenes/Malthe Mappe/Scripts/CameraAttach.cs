@@ -32,6 +32,7 @@ public class CameraAttach : MonoBehaviour
         var direction = target.position - transform.position;
         var rotation = Quaternion.LookRotation(direction, (Vector3.up));
         transform.rotation = Quaternion.Lerp(transform.rotation, rotation, rotationSpeed * Time.deltaTime);
+        // noget med flip af kameraet hvis Z positionen er over
     }
 
 }
